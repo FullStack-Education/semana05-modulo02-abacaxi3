@@ -42,6 +42,7 @@ function calcularMedia(notasArray) {
     let media = soma / notasArray.length;
     return media;
 }
+var medias = [];
 
 function submitForm(event){
     event.preventDefault();
@@ -53,9 +54,10 @@ function submitForm(event){
     notas.push(parseFloat(document.getElementById('nota2').value));
     notas.push(parseFloat(document.getElementById('nota3').value));
     notas.push(parseFloat(document.getElementById('nota4').value));
-    var media = calcularMedia(notas).toFixed(1); 
+    var mediaNumerica = calcularMedia(notas)
+    var media = mediaNumerica.toFixed(1); 
     
-
+    medias.push(mediaNumerica)
 
     var newRow = '<tr>' +
     '<td>' + materia + '</td>' +
@@ -70,10 +72,27 @@ function submitForm(event){
     document.getElementById('notasTabela').innerHTML += newRow;
     document.getElementById('closeModal').click()
     document.getElementById('form-notas-materia').reset();
+
+    let mediaGeral = document.getElementById('mediaGeralAluno');
+    mediaGeral.innerText = 'A média geral do aluno é: ' + calcularMediaAluno(medias).toFixed(1);
 }
 
 
 document.getElementById('form-notas-materia').addEventListener('submit', this.submitForm)
+
+
+
+function calcularMediaAluno (notas) {
+    somaNotas = 0;
+
+    for (var nota of notas) {
+        somaNotas += nota; 
+    }
+    var media = somaNotas / notas.length;
+    return media;
+
+}
+
 
 //Exercício 02
 window.addEventListener('load',this.pedirInformacoes);
