@@ -47,8 +47,8 @@ function maiorNumero(listaNumeros) {
 function calcularMediaListaNumeros(listaNumeros) {
     let soma = 0;
 
-    for (let i = 0; i < listaNumeros.length; i++) {
-        soma += listaNumeros[i];
+    for (numero of listaNumeros) {
+        soma += numero;
     }
     // Calcular a média
     let media = soma / listaNumeros.length;
@@ -73,13 +73,13 @@ function submitForm(event) {
     medias.push(mediaNumerica)
 
     var newRow = '<tr>' +
-        '<td>' + materia + '</td>' +
-        '<td>' + notas[0] + '</td>' +
-        '<td>' + notas[1] + '</td>' +
-        '<td>' + notas[2] + '</td>' +
-        '<td>' + notas[3] + '</td>' +
-        '<td>' + media + '</td>' +
-        '</tr>';
+        '<td>' + materia + '</td>';
+
+        for (nota of notas) {
+            newRow += '<td>' + notas[0] + '</td>';
+        }
+        
+        newRow += '<td>' + media + '</td></tr>';
 
 
     document.getElementById('notasTabela').innerHTML += newRow;
