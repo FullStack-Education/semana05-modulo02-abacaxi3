@@ -63,10 +63,12 @@ function submitForm(event) {
     var materia = document.getElementById('materia').value;
     let notas = []
 
-    notas.push(parseFloat(document.getElementById('nota1').value));
-    notas.push(parseFloat(document.getElementById('nota2').value));
-    notas.push(parseFloat(document.getElementById('nota3').value));
-    notas.push(parseFloat(document.getElementById('nota4').value));
+
+    for(valueInput of document.getElementsByClassName('notas')){
+        notas.push(parseFloat(valueInput.value));
+    }
+    
+
     var mediaNumerica = calcularMediaListaNumeros(notas)
     var media = mediaNumerica.toFixed(1);
 
