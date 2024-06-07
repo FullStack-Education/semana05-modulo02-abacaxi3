@@ -7,11 +7,11 @@ function pedirInformacoes() {
     let materiaFav = prompt("Qual sua matéria favorita?", "Digite o nome da matéria");
 
     let msgConfirm = "Os dados informados estão corretos?\n" +
-    "Nome: " + nome + "\n" +
-    "Idade: " + idade + "\n" +
-    "Série: " + serie + "\n" +
-    "Escola: " + escola + "\n" +
-    "Matéria favorita: " + materiaFav;
+        "Nome: " + nome + "\n" +
+        "Idade: " + idade + "\n" +
+        "Série: " + serie + "\n" +
+        "Escola: " + escola + "\n" +
+        "Matéria favorita: " + materiaFav;
 
     let confirmar = confirm(msgConfirm);
 
@@ -32,6 +32,18 @@ function pedirInformacoes() {
 }
 
 
+function maiorNumero(listaNumeros) {
+    let maiorNumero = -Infinity
+
+    for (let i = 0; i < listaNumeros.length; i++) {
+        if (listaNumeros[i] > maiorNumero) {
+            maiorNumero = listaNumeros[i]
+        }
+    }
+    return maiorNumero;
+}
+
+
 function calcularMediaListaNumeros(listaNumeros) {
     let soma = 0;
 
@@ -45,29 +57,29 @@ function calcularMediaListaNumeros(listaNumeros) {
 
 var medias = [];
 
-function submitForm(event){
+function submitForm(event) {
     event.preventDefault();
 
     var materia = document.getElementById('materia').value;
-    let notas =[]
+    let notas = []
 
     notas.push(parseFloat(document.getElementById('nota1').value));
     notas.push(parseFloat(document.getElementById('nota2').value));
     notas.push(parseFloat(document.getElementById('nota3').value));
     notas.push(parseFloat(document.getElementById('nota4').value));
     var mediaNumerica = calcularMediaListaNumeros(notas)
-    var media = mediaNumerica.toFixed(1); 
-    
+    var media = mediaNumerica.toFixed(1);
+
     medias.push(mediaNumerica)
 
     var newRow = '<tr>' +
-    '<td>' + materia + '</td>' +
-    '<td>' + notas[0] + '</td>' +
-    '<td>' + notas[1] + '</td>' +
-    '<td>' + notas[2] + '</td>' +
-    '<td>' + notas[3] + '</td>' +
-    '<td>' + media + '</td>' +
-    '</tr>';
+        '<td>' + materia + '</td>' +
+        '<td>' + notas[0] + '</td>' +
+        '<td>' + notas[1] + '</td>' +
+        '<td>' + notas[2] + '</td>' +
+        '<td>' + notas[3] + '</td>' +
+        '<td>' + media + '</td>' +
+        '</tr>';
 
 
     document.getElementById('notasTabela').innerHTML += newRow;
@@ -76,6 +88,10 @@ function submitForm(event){
 
     let mediaGeral = document.getElementById('mediaGeralAluno');
     mediaGeral.innerText = 'A média geral do aluno é: ' + calcularMediaListaNumeros(medias).toFixed(1);
+
+    let maiorMedia = maiorNumero(medias)
+    document.getElementById('maiorMedia').innerHTML = maiorMedia
+
 }
 
 
@@ -83,28 +99,10 @@ document.getElementById('form-notas-materia').addEventListener('submit', this.su
 
 
 //Exercício 02
-window.addEventListener('load',function(event){
-  this.pedirInformacoes();
-  this.imprimeMaiorMedia([1,3,5,7,10]);
+window.addEventListener('load', function (event) {
+    this.pedirInformacoes();
 });
 
 
-function maiorNumero (listaNumeros){
-  let maiorNumero = -99999
-
-  for (let i = 0; i < listaNumeros.length; i++) {
-        
-
-  if(listaNumeros[i]>maiorNumero){
-    maiorNumero = listaNumeros [i]
-  } 
-
-  }
-  return maiorNumero;
-}
-function  imprimeMaiorMedia(listaMedias){
-  let maiorMedia = this.maiorNumero(listaMedias)
-  document.getElementById('maiorMedia').innerHTML = maiorMedia
-}
 
 
