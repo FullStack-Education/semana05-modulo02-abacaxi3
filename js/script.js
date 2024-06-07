@@ -77,8 +77,8 @@ function submitForm(event) {
     var newRow = '<tr>' +
         '<td>' + materia + '</td>';
 
-        for (nota of notas) {
-            newRow += '<td>' + notas[0] + '</td>';
+        for (let nota of notas) {
+            newRow += '<td>' + nota + '</td>';
         }
         
         newRow += '<td>' + media + '</td></tr>';
