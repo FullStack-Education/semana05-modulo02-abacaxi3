@@ -95,6 +95,28 @@ function calcularMediaAluno (notas) {
 
 
 //Exercício 02
-window.addEventListener('load',this.pedirInformacoes);
+window.addEventListener('load',function(event){
+  this.pedirInformacoes();
+  this.imprimeMaiorMedia([1,3,5,7,10]);
+});
+
+
+function maiorNumero (listaNumeros){
+  let maiorNumero = -99999
+
+  for (let i = 0; i < listaNumeros.length; i++) {
+        
+
+  if(listaNumeros[i]>maiorNumero){
+    maiorNumero = listaNumeros [i]
+  } 
+
+  }
+  return maiorNumero;
+}
+function  imprimeMaiorMedia(listaMedias){
+  let maiorMedia = this.maiorNumero(listaMedias)
+  document.getElementById('maiorMedia').innerHTML = maiorMedia
+}
 
 
